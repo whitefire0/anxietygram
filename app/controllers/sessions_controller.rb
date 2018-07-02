@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  # skip_before_action: login_required
+  skip_before_action :login_required, only: [:new, :login]
 
   def new
   end
@@ -11,6 +11,11 @@ class SessionsController < ApplicationController
     else
       flash.now[:alert] = "Username/password was invalid"
     end
+  end
+
+  def destroy
+    auth_session.invalidate!
+    redirect_to login_path, notice: 'Logged out successfully.'
   end
 
 end

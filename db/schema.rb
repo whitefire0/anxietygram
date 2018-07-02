@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_02_103541) do
+ActiveRecord::Schema.define(version: 2018_07_02_114331) do
 
   create_table "authie_sessions", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "token"
@@ -41,6 +41,24 @@ ActiveRecord::Schema.define(version: 2018_07_02_103541) do
     t.index ["user_id"], name: "index_authie_sessions_on_user_id"
   end
 
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "comment"
+    t.bigint "user_id"
+    t.bigint "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["image_id"], name: "index_comments_on_image_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "hashtags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "tagname"
+    t.bigint "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["image_id"], name: "index_hashtags_on_image_id"
+  end
+
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "caption"
     t.datetime "created_at", null: false
@@ -51,6 +69,15 @@ ActiveRecord::Schema.define(version: 2018_07_02_103541) do
     t.datetime "graphic_updated_at"
   end
 
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "image_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["image_id"], name: "index_likes_on_image_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "username"
     t.string "email"
@@ -59,4 +86,9 @@ ActiveRecord::Schema.define(version: 2018_07_02_103541) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "comments", "images"
+  add_foreign_key "comments", "users"
+  add_foreign_key "hashtags", "images"
+  add_foreign_key "likes", "images"
+  add_foreign_key "likes", "users"
 end

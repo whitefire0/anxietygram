@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Anxietynow
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %ul.navbar
+      %li= link_to 'Home', root_path
+      %li= link_to 'Images', root_path
+      
+      - if logged_in?
+        %li= link_to 'Submit Image', root_path
+        %li= link_to 'My Profile', root_path
+        %li= link_to 'Logout', logout_path
+      - else
+        %li= link_to 'Login', login_path
+        %li= link_to 'Register', new_user_path
+        
+    = yield

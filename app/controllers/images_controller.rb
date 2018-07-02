@@ -20,7 +20,7 @@ class ImagesController < ApplicationController
   end
 
   def show
-    @image = Image.find_by(params[:id])
+    @image = Image.find(params[:id])
     @comments = Comment.where(:image_id => params[:id])
   end
 

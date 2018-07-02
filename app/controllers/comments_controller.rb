@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
   def new
-    @comment = Comment.new
-    @image = Image.find(params[:image_id])
+    @comment = @image.comments.build
   end
 
 
@@ -12,6 +11,12 @@ class CommentsController < ApplicationController
     # on successful saving, redirect back to the image show
 
   def create
+  end
+
+  private
+
+  def set_image
+    @image = Image.find(params[:image_id])
   end
 
 end

@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   def new
-    @comment = 
+    @comment = Comment.new
+    @image = Image.find(params[:image_id])
   end
 
 

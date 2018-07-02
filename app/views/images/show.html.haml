@@ -10,4 +10,6 @@
       = 'Caption:'
       = comment.comment
 
-= link_to "Add Comment", new_comment_path(@image)
+-# where @image.id = int
+= link_to "Add Comment", new_comment_path(image_id: @image.id)
+-# rendeers as   <a href="/comments/new.8">Add Comment</a>

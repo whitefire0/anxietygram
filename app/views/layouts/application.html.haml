@@ -10,10 +10,10 @@
   %body
     %ul.navbar
       %li= link_to 'Home', root_path
-      %li= link_to 'Images', root_path
+      %li= link_to 'Images', images_path
       
       - if logged_in?
-        %li= link_to 'Submit Image', root_path
+        %li= link_to 'Submit Image', new_image_path
         %li= link_to 'My Profile', root_path
         %li= link_to 'Logout', logout_path
       - else

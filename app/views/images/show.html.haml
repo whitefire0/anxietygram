@@ -1,3 +1,13 @@
 %p 
   = @image.caption
 = image_tag @image.graphic.url(:medium)
+- @comments.each do |comment|
+  %ul
+    %li
+      = 'Username:'
+      = comment.user.username
+    %li
+      = 'Caption:'
+      = comment.comment
+
+= link_to "Add Comment", new_comment_path(@image)

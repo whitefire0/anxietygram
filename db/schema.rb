@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_02_114331) do
+ActiveRecord::Schema.define(version: 2018_07_02_124010) do
 
   create_table "authie_sessions", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "token"
@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(version: 2018_07_02_114331) do
     t.string "graphic_content_type"
     t.integer "graphic_file_size"
     t.datetime "graphic_updated_at"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_images_on_user_id"
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -89,6 +91,7 @@ ActiveRecord::Schema.define(version: 2018_07_02_114331) do
   add_foreign_key "comments", "images"
   add_foreign_key "comments", "users"
   add_foreign_key "hashtags", "images"
+  add_foreign_key "images", "users"
   add_foreign_key "likes", "images"
   add_foreign_key "likes", "users"
 end

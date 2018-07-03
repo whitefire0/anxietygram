@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
+  before_action :owned_post, only: [:edit, :update, :destroy]
   skip_before_action :login_required, only: [:new, :create]
   
   def index
@@ -27,12 +28,6 @@ class ImagesController < ApplicationController
   end
 
   def edit
-    if @image.user.id == current_user.id
-      render :edit
-    else
-      flash[:error] = "You do not own this post! Das ist forboden!!"
-      redirect_to images_path
-    end
   end
 
   def update
@@ -68,5 +63,13 @@ class ImagesController < ApplicationController
 
   def safe_user_params
     params.require(:image).permit(:graphic, :graphic_file_name, :caption)
+  end
+
+  def owned_post
+    unless current_user.id == @image.user.id
+      DebugHelper.mylog("ownedpost", "current_user", current_user.inspect)
+      flash[:error] = "You do not own this post! Das ist forboden!!"
+      redirect_to root_path
+    end
   end
 end

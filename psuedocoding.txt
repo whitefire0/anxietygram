@@ -1,0 +1,7 @@
+edit image
+  create edit link to GET images/:id/edit, edit_image_path
+  create edit method
+  create update method
+  create edit view form
+  create before_action set_image helper
+

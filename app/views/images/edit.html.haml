@@ -1,0 +1,9 @@
+.form-wrapper
+  = form_for @image, controller: 'images', action: 'update' do |f|
+    .from-group
+      = f.file_field :graphic
+    .form-group
+      = f.label :caption
+      = f.text_field :caption
+    .form-group
+      = f.submit 'Update', class: 'btn-success'

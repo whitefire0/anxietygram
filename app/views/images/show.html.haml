@@ -1,14 +1,4 @@
-%p 
-  = @image.caption
-= image_tag @image.graphic.url(:medium)
-- @comments.each do |comment|
-  %ul
-    %li
-      = 'Username:'
-      = comment.user.username
-    %li
-      = 'Caption:'
-      = comment.comment
+= render 'image', image: @image
 
 .text-center.edit-links
   - if @image.user.id  == current_user.id

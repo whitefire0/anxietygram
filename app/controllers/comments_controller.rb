@@ -10,10 +10,10 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash[:success] = "You commented the shit out of that post!"
-      redirect_to :back
+      redirect_to images_path
     else
       flash[:error] = "Check the comment form...that didn't work"
-      redirect_to :back
+      redirect_to images_path
     end
 
   end
@@ -23,10 +23,10 @@ class CommentsController < ApplicationController
 
     if @comment.destroy
       flash[:success] = "You smashed that comment"
-      redirect_to root_path
+      redirect_to images_path
     else
       flash[:error] = "Unable to destroy comment"
-      redirect_to :back
+      redirect_to images_path
     end
   end
 

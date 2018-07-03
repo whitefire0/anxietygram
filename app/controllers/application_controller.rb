@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
 
   def login_required
     unless logged_in?
-      redirect_to login_path, :alert => "You must be logged in to view this resource"
+      flash[:alert] = "You must be logged in to view this resource"
+      redirect_to login_path
     end
   end
 end

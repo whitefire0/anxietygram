@@ -14,9 +14,11 @@ class ImagesController < ApplicationController
   def create
     @image = current_user.images.build(safe_user_params)
     if @image.save
-      redirect_to images_path, notice: "Image submitted successfully"
+      flash[:success] = "Your post has been created!"
+      redirect_to images_path
     else
-      redirect_to new_image_path, notice: "Image submission error"
+      flash[:error] = "Image submission error"
+      redirect_to new_image_path
     end
   end
 
@@ -32,17 +34,21 @@ class ImagesController < ApplicationController
     DebugHelper.mylog("params", "params in image#update", myparams.inspect)
 
     if @image.update(safe_user_params)
-      redirect_to image_path, notice: "Image edited successfully"
+      flash[:success] = "Image edited successfully"
+      redirect_to image_path
     else
-      redirect_to edit_image_path, notice: "Image submission error"
+      flash[:error] = "Image submission error"
+      redirect_to edit_image_path
     end
   end
 
   def destroy
     if @image.destroy
-      redirect_to images_path, notice: "Image destroyed successfully"
+      flash[:success] = "Image destroyed successfully"
+      redirect_to images_path
     else
-      redirect_to image_path, notice: "Image destroy unsuccessful"
+      flash[:error] = "Image destroy unsuccessful"
+      redirect_to image_path
     end
   end
 

@@ -27,7 +27,7 @@
               %li= link_to 'Login', login_path
               %li= link_to 'Register', new_user_path
     .main
-      %h3
-        - flash.each do |key, value|
+      - flash.each do |key, value|
+        %div{ class: "#{flash_class(key)}" }
           = value
       = yield

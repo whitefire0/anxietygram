@@ -8,15 +8,19 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user.present? && @user.authenticate(params[:password])
       self.current_user = @user
-      redirect_to root_path, notice: "User logged in successfully"
+      flash[:success] = "User logged in successfully"
+      redirect_to root_path
     else
-      flash.now[:alert] = "Username/password was invalid"
+      flash.now[:error] = "Username/password was invalid"
     end
   end
 
   def destroy
-    auth_session.invalidate!
-    redirect_to login_path, notice: 'Logged out successfully.'
+    if auth_session.invalidate!
+      flash[:success] = "You have successfully logged out"
+      redirect_to login_path
+    else
+      flash[:error] = "Error logging out."
+    end
   end
-
 end

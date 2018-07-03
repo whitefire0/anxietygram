@@ -9,9 +9,11 @@ class UsersController < ApplicationController
     @user = User.new(safe_user_params)
     if @user.save
       self.current_user = @user
-      redirect_to root_path, notice: 'User registered'
+      flash[:success] = "User registered"
+      redirect_to root_path
     else
-      redirect_to new_user_path, notice: 'Unable to register user'
+      flash[:error] = "Unable to register user"
+      redirect_to new_user_path
     end
   end
 

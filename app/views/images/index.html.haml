@@ -1,6 +1,10 @@
 %h1 Images
+.posts-wrapper.row
 - @images.each do |image|
-  = image_tag image.graphic.url(:medium)
-  = image.caption
+  .post
+    .post-head
+    .image.center-block
+      = image_tag image.graphic.url(:medium), class: 'img-responsive'
+    %p.caption
+    = image.caption
   = link_to "View comments", image_path(image)
-  %hr

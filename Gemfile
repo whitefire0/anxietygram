@@ -67,3 +67,6 @@ gem 'paperclip'
 gem 'authie', '~> 3.1'
 gem 'dynamic_form'
 gem 'seed_dump'
+gem 'bootstrap-sass', '~> 3.3.5'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+

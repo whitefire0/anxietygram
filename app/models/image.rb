@@ -5,7 +5,7 @@ class Image < ApplicationRecord
   validates_attachment_content_type :graphic, :content_type => /\Aimage\/.*\Z/
 
   has_many :hashtags
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :likes
   belongs_to :user
   

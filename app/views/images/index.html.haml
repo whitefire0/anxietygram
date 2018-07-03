@@ -1,5 +1,4 @@
 %h1 Images
-
 - @images.each do |image|
   .posts-wrapper.row
     .post
@@ -7,6 +6,22 @@
         = image.user.username
       .image.center-block
         = image_tag image.graphic.url(:medium), class: 'img-responsive'
-      %p.caption
-      = image.caption
-    = link_to "View comments", image_path(image)
+      .post-bottom
+        .caption
+          .user-name
+            = image.user.username
+          = image.caption
+        - if image.comments
+          - image.comments.each do |comment|
+            .comment
+              .user-name
+                = comment.user.username
+              .comment-content
+                = comment.comment
+              - if comment.user.id = current_user.id
+                = link_to "Delete comment", image_comment_path(image, comment), method: :delete, data: { confirm: "Are you sure?" }
+        .comment-form
+          = form_for [image, image.comments.new] do |f|
+            = f.text_field :comment, placeholder: "Add a comment..."
+
+  = link_to "Show this image", image_path(image)

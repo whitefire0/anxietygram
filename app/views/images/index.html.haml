@@ -4,6 +4,7 @@
   .posts-wrapper.row
     .post
       .post-head
+        = image.user.username
       .image.center-block
         = image_tag image.graphic.url(:medium), class: 'img-responsive'
       %p.caption

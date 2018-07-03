@@ -8,7 +8,7 @@ class ImagesController < ApplicationController
   end
 
   def new
-    @image = Image.new
+    @image = current_user.images.build
   end
 
   def create
@@ -27,6 +27,12 @@ class ImagesController < ApplicationController
   end
 
   def edit
+    if @image.user.id == current_user.id
+      render :edit
+    else
+      flash[:error] = "You do not own this post! Das ist forboden!!"
+      redirect_to images_path
+    end
   end
 
   def update

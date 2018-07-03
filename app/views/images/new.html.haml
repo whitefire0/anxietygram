@@ -1,10 +1,2 @@
 %h2 New Image
-.form-wrapper
-  = form_for @image, html: { class: 'form-horizantal', multipart: true }, local: true do |f|
-    .from-group
-      = f.file_field :graphic
-    .form-group
-      = f.label :caption
-      = f.text_field :caption
-    .form-group
-      = f.submit 'Post', class: 'btn-success'
+= render 'form'

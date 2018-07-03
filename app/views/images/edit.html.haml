@@ -1,14 +1,6 @@
 .text-center
   = image_tag @image.graphic.url(:medium)
-.form-wrapper
-  = form_for @image, controller: 'images', action: 'update' do |f|
-    .from-group
-      = f.file_field :graphic
-    .form-group
-      = f.label :caption
-      = f.text_field :caption
-    .form-group
-      = f.submit 'Update', class: 'btn-success'
+= render 'form'
 
 .text-center.edit-links
   = link_to "Delete post", image_path(@image.id), method: :delete, data: { confirm: "Are you sure you want to delete this post?" }

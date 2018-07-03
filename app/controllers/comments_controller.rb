@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   def new
-    @comment = @image.comments.build
+    # @comment = @image.comments.build
   end
 
 
@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
   private
 
   def set_image
-    @image = Image.find(params[:image_id])
+    # @image = Image.find(params[:image_id])
   end
 
 end

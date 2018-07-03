@@ -10,6 +10,7 @@
       = 'Caption:'
       = comment.comment
 
-= link_to "Edit image", edit_image_path(@image.id)
-
-= link_to "Add Comment", new_image_comment_path(@image.id)
+.text-center.edit-links
+  = link_to "Edit image", edit_image_path(@image.id)
+  = link_to "Add Comment", new_image_comment_path(@image.id)
+  = link_to "Go back", images_path

@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_action :set_image, only: [:show, :edit, :update]
+  before_action :set_image, only: [:show, :edit, :update, :destroy]
   skip_before_action :login_required, only: [:new, :create]
   
   def index
@@ -35,6 +35,14 @@ class ImagesController < ApplicationController
       redirect_to image_path, notice: "Image edited successfully"
     else
       redirect_to edit_image_path, notice: "Image submission error"
+    end
+  end
+
+  def destroy
+    if @image.destroy
+      redirect_to images_path, notice: "Image destroyed successfully"
+    else
+      redirect_to image_path, notice: "Image destroy unsuccessful"
     end
   end
 

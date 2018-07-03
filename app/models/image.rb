@@ -6,6 +6,6 @@ class Image < ApplicationRecord
   has_many :hashtags
   has_many :comments
   has_many :likes
-
+  belongs_to :user
   
 end

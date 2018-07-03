@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
-  resources :users, only: [:new, :edit, :show, :destroy]
-  resources :hashtags, only: [:new, :show]
+  resources :users
+  resources :hashtags
 
-  resources :images, only: [:index, :new, :edit, :show, :destroy] do
-    resources :comments, only: [:new, :edit, :destroy]
+  resources :images do
+    resources :comments
   end
 
   get 'login', to: 'sessions#new'

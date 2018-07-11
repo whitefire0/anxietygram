@@ -12,7 +12,7 @@
           = image.user.username
         = image.caption
       - if image.comments
-        = render image.comments.
+        = render image.comments, image: image
           
     .comment-like-form.row
       .like-button.col-sm-1
@@ -20,31 +20,3 @@
       .comment-form.col-sm-11
         = form_for [image, image.comments.new] do |f|
           = f.text_field :comment, placeholder: 'Add a comment...'
-
-
-.posts-wrapper
-  .post
-    .post-head
-      .thumb-img
-      .user-name
-        = post.user.user_name
-    .image.center-block
-      = link_to (image_tag post.image.url(:medium), class:'img-
-responsive'), post_path(post)
-    .post-bottom
-      .caption
-        .caption-content
-          .user-name
-            = post.user.user_name
-          = post.caption
-        .comments{id: "comments_#{post.id}"}
-          - if post.comments
-            = render post.comments, post: post
-    .comment-like-form.row
-      .like-button.col-sm-1
-        %span(class="glyphicon glyphicon-heart-empty")
-      .comment-form.col-sm-11
-        = form_for [post, post.comments.build] do |f|
-          = f.text_field :content, placeholder: 'Add a
-comment...', class: "comment_content", id: "comment_content_#
-{post.id}"

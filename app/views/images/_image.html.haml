@@ -12,18 +12,39 @@
           = image.user.username
         = image.caption
       - if image.comments
-        - image.comments.each do |comment|
-          .comment
-            .user-name
-              = comment.user.username
-            .comment-content
-              = comment.comment
-            - if comment.user == current_user
-              = link_to image_comment_path(image, comment), method: :delete, data: { confirm: "Are you sure?" } do
-                %span(class="glyphicon glyphicon-remove delete-comment-icon")
+        = render image.comments.
+          
     .comment-like-form.row
       .like-button.col-sm-1
         %span(class="glyphicon glyphicon-heart-empty")
       .comment-form.col-sm-11
         = form_for [image, image.comments.new] do |f|
           = f.text_field :comment, placeholder: 'Add a comment...'
+
+
+.posts-wrapper
+  .post
+    .post-head
+      .thumb-img
+      .user-name
+        = post.user.user_name
+    .image.center-block
+      = link_to (image_tag post.image.url(:medium), class:'img-
+responsive'), post_path(post)
+    .post-bottom
+      .caption
+        .caption-content
+          .user-name
+            = post.user.user_name
+          = post.caption
+        .comments{id: "comments_#{post.id}"}
+          - if post.comments
+            = render post.comments, post: post
+    .comment-like-form.row
+      .like-button.col-sm-1
+        %span(class="glyphicon glyphicon-heart-empty")
+      .comment-form.col-sm-11
+        = form_for [post, post.comments.build] do |f|
+          = f.text_field :content, placeholder: 'Add a
+comment...', class: "comment_content", id: "comment_content_#
+{post.id}"

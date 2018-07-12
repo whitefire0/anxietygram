@@ -1,24 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+>> "It sounds daft to suggest a platform where you post snaps of your dinner, cocktail or kids could make you feel down, but I'm serious: Instagram was affecting my mood on a daily basis," Jenny Stallard writes for The Telegraph.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Personally, I think we need _more_ anxiety. Welcome to AnxietyGram.

@@ -4,6 +4,8 @@
       .thumb-img
       .user-name
         = image.user.username
+      .time-ago
+        = time_ago_in_words image.created_at
     .image.center-block
       = link_to (image_tag image.graphic.url(:medium), class:'img-responsive'), image_path(image)
     .post-bottom

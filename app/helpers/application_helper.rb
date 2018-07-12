@@ -7,4 +7,9 @@ module ApplicationHelper
         when 'alert' then "alert alert-warning"
     end
   end
+
+  def form_image_select(image)
+    return image_tag image.graphic.url(:medium), id: 'image-preview', class: 'img-responsive' if image.graphic.exists?
+    image_tag 'placeholder.jpg', id: 'image-preview', class: 'img-responsive'
+  end
 end

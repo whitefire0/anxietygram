@@ -16,8 +16,7 @@ body {
   background-color: #fafafa;
   font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   padding-top: 4em;
-  // height: 25%;
-  background-image: image-url('signs-of-high-functioning-anxiety.jpg');
+  background-image: image-url('sppYO5G.jpg');
   -moz-background-size: cover;
   -webkit-background-size: cover;
   -o-background-size: cover;
@@ -164,10 +163,14 @@ html {
   // background-size: cover;
 }
 .log-in{
+  transform: translateY(50px);
   margin-left: auto;
   margin-right: auto;
   text-align:center;
   border: none;
+  input {
+    max-width: 100%;
+  }
 }
 .panel {
   border-radius: 8px;

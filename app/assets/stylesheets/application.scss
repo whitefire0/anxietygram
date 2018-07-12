@@ -16,11 +16,6 @@ body {
   background-color: #fafafa;
   font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   padding-top: 4em;
-  background-image: image-url('sppYO5G.jpg');
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
 }
 /* ## NAVBAR CUSTOMISATIONS ## */
 .navbar {
@@ -154,13 +149,13 @@ html {
   height: 100%;
 }
 .registration-bg {
-  // padding-top: 4em;
-  // height: 99%;
-  // background-image: image-url('signs-of-high-functioning-anxiety.jpg');
-  // -moz-background-size: cover;
-  // -webkit-background-size: cover;
-  // -o-background-size: cover;
-  // background-size: cover;
+  padding-top: 4em;
+  height: 500px;
+  background-image: image-url('sppYO5G.jpg');
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 .log-in{
   transform: translateY(50px);
@@ -179,4 +174,13 @@ html {
   h1 {
     text-align: center;
   }
+}
+
+
+#image-preview {
+  margin: 0px auto;
+}
+#post_image {
+  padding: 1em;
+  margin: 0px auto;
 }

@@ -1,0 +1,13 @@
+.registration-bg
+  .container
+    .row
+      .col-md-4.col-md-offset-4
+        .log-in.panel
+          .panel-heading
+            %h2 Log in
+          = simple_form_for @user, url: login_path, remote: false do |f|
+            = f.error_notification
+            .panel-body
+              = f.input :username, required: true, label: false, placeholder: 'User Name', input_html: { class: 'input-lg'}
+              = f.input :password, required: true, label: false, placeholder: 'Password', input_html: { class: 'input-lg' }
+              = f.button :submit, "Log in", class: 'btn-lg btn-info btn-block'

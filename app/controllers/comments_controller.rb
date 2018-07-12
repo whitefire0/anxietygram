@@ -24,9 +24,13 @@ class CommentsController < ApplicationController
   def destroy
     @comment = @image.comments.find(params[:id])
 
-    if @comment.destroy
+    if @comment.user_id == current_user.id
+      @comment.destroy
       flash[:success] = "You smashed that comment"
-      redirect_to images_path
+      respond_to do |format|
+        format.html { redirect_to images_path }
+        format.js
+      end
     else
       flash[:error] = "Unable to destroy comment"
       redirect_to images_path

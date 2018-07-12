@@ -1,2 +1,2 @@
-$('#comments_<%= @image.id %>').append("<%=j render 'comments/comment', image: @image, comment: @comment %>");
+$('#comments_<%= @image.id %>').append("<%= j render 'comments/comment', image: @image, comment: @comment %>");
 $('#comment_content_<%= @image.id %>').val('')

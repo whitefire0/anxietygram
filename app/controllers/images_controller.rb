@@ -4,6 +4,7 @@ class ImagesController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
   
   def index
+    DebugHelper.mylog("testlog", "message", "variable")
     @images = Image.all
     # @comments = Comment.all
   end
@@ -13,6 +14,7 @@ class ImagesController < ApplicationController
   end
 
   def create
+    Rails.logger.error "Current user: #{current_user.inspect}"
     @image = current_user.images.build(safe_user_params)
     if @image.save
       flash[:success] = "Your post has been created!"

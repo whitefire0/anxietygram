@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'profiles/show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   resources :users
@@ -11,6 +12,9 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
+
+  get ':username', to: 'profiles#show', as: :profile
+  get ':username/edit', to: 'profiles#edit', as: :edit_profile
 
   root 'home#index'
 end

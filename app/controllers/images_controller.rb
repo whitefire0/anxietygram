@@ -4,7 +4,7 @@ class ImagesController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
   
   def index
-    @images = Image.all.order('created_at DESC').page(3).per(10)
+    @images = Image.all
     # TODO: find way of implementing the pagination gem
     # @images = Image.all.order('created_at DESC') params[:page]
   end

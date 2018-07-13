@@ -4,9 +4,9 @@ class ImagesController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
   
   def index
-    DebugHelper.mylog("testlog", "message", "variable")
-    @images = Image.all
-    # @comments = Comment.all
+    @images = Image.all.order('created_at DESC').page(3).per(10)
+    # TODO: find way of implementing the pagination gem
+    # @images = Image.all.order('created_at DESC') params[:page]
   end
 
   def new
@@ -73,5 +73,9 @@ class ImagesController < ApplicationController
       flash[:error] = "You do not own this post! Das ist forboden!!"
       redirect_to root_path
     end
+  end
+
+  def permit_page_param
+    params.permit(:page)
   end
 end

@@ -1,4 +1,5 @@
-%h1 Images
 - @images.each do |image|
   = render 'image', image: image
   = link_to "Show this image", image_path(image)
+
+-# = paginate @images

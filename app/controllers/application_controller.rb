@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :login_required
+  # before_action :get_user
   rescue_from Authie::Session::ValidityError, :with => :auth_session_error
 
   private

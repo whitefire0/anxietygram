@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_action :set_image, only: [:show, :edit, :update, :destroy]
+  before_action :set_image, only: [:show, :edit, :update, :destroy, :like]
   before_action :owned_post, only: [:edit, :update, :destroy]
   skip_before_action :login_required, only: [:new, :create]
   
@@ -52,6 +52,15 @@ class ImagesController < ApplicationController
     else
       flash[:error] = "Image destroy unsuccessful"
       redirect_to image_path
+    end
+  end
+
+  def like
+    if @post.liked_by current_user
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+      end 
     end
   end
 

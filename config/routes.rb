@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   resources :images do
     resources :comments
+    member do
+      get 'like'
+    end
   end
 
   get 'login', to: 'sessions#new'

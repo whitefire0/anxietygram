@@ -8,15 +8,18 @@ class CommentsController < ApplicationController
     @comment = @image.comments.build(comment_params)
     @comment.user_id = current_user.id
 
-    if @comment.save
+    respond_to do |format|
+      if @comment.save
       # flash[:success] = "You commented the shit out of that post!"
-      respond_to do |format|
         format.html { redirect_to images_path }
         format.js
+      else
+        format.html do
+          flash[:error] = "Check the comment form...that didn't work"
+          redirect_to images_path
+        end
+        format.js
       end
-    else
-      flash[:error] = "Check the comment form...that didn't work"
-      redirect_to images_path
     end
 
   end

@@ -74,6 +74,6 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'awesome_print'
 gem 'kaminari', '~> 0.16.3'
-gem 'acts_as_votable', '~> 0.10.0'
+gem 'acts_as_votable', '~> 0.11.1'
 
 

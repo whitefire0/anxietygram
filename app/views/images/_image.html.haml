@@ -18,7 +18,7 @@
           
     .comment-like-form.row
       .like-button.col-sm-1
-        = link_to '', like_image_path(image.id), remote: true, id: "like_#{image.id}", class: "glyphicon #{liked_image image}"
+        = link_to '', like_image_path(image.id), remote: true, id: "like_#{image.id}", class: "like glyphicon #{liked_image image}"
       .comment-form.col-sm-11
         = form_for [image, image.comments.build], remote: true do |f|
           = f.text_field :comment, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{image.id}"

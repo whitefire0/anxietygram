@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :owned_profile, only: [:edit, :update]
-  
+  before_action :login_required
+
   def show
     @user = User.find_by(username: params[:username])
     @images = User.find_by(username: params[:username]).images.order('created_at DESC')

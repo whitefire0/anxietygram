@@ -10,5 +10,6 @@ class Image < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes
   belongs_to :user
+  has_many :notifications, dependent: :destroy
   
 end

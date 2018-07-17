@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-      # flash[:success] = "You commented the shit out of that post!"
+        create_notification(@image, @comment)
         format.html { redirect_to images_path }
         format.js
       else
@@ -21,7 +21,6 @@ class CommentsController < ApplicationController
         format.js
       end
     end
-
   end
 
   def destroy
@@ -48,6 +47,11 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:comment)
+  end
+
+  def create_notification(image, comment)
+    return if image.user.id == current_user.id
+    Notification.create(user_id: image.user.id, notified_by_id: current_user.id, image_id: image.id, comment_id: comment.id, notify_type: 'comment')
   end
 
 end

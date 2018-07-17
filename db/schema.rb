@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_16_095958) do
+ActiveRecord::Schema.define(version: 2018_07_17_094836) do
 
   create_table "authie_sessions", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "token"
@@ -78,6 +78,22 @@ ActiveRecord::Schema.define(version: 2018_07_16_095958) do
     t.datetime "updated_at", null: false
     t.index ["image_id"], name: "index_likes_on_image_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "subscribed_user_id"
+    t.bigint "image_id"
+    t.integer "identifier"
+    t.string "type"
+    t.boolean "read"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "notified_by_id"
+    t.index ["image_id"], name: "index_notifications_on_image_id"
+    t.index ["notified_by_id"], name: "index_notifications_on_notified_by_id"
+    t.index ["subscribed_user_id"], name: "index_notifications_on_subscribed_user_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

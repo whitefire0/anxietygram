@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_17_121000) do
+ActiveRecord::Schema.define(version: 2018_07_18_090416) do
 
   create_table "authie_sessions", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "token"
@@ -84,7 +84,6 @@ ActiveRecord::Schema.define(version: 2018_07_17_121000) do
     t.bigint "user_id"
     t.bigint "subscribed_user_id"
     t.bigint "image_id"
-    t.integer "identifier"
     t.string "notify_type"
     t.boolean "read"
     t.datetime "created_at", null: false

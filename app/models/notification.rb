@@ -3,6 +3,6 @@ class Notification < ApplicationRecord
   belongs_to :user
   belongs_to :image
 
-  validates :user_id, :notified_by_id, :image_id, :identifier, :type, presence: true
+  validates :user_id, :notified_by_id, :image_id, :notify_type, presence: true
 
 end

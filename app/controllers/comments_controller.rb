@@ -50,8 +50,9 @@ class CommentsController < ApplicationController
   end
 
   def create_notification(image, comment)
+    # TODO: find out if we need comment_id: comment.id passed to Notification.create
     return if image.user.id == current_user.id
-    Notification.create(user_id: image.user.id, notified_by_id: current_user.id, image_id: image.id, comment_id: comment.id, notify_type: 'comment')
+    Notification.create(user_id: image.user.id, notified_by_id: current_user.id, image_id: image.id, notify_type: 'comment')
   end
 
 end

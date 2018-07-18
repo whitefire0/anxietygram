@@ -14,7 +14,8 @@
         .user-name
           = image.user.username
         = image.caption
-      .comments{id: "comments_#{image.id}"}= render image.comments, image: image
+      .comments{id: "comments_#{image.id}"}
+      = render image.comments, image: image
           
     .comment-like-form.row
       .like-button.col-sm-1

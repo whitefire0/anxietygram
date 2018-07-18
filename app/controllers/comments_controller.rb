@@ -10,7 +10,6 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        create_notification(@image, @comment)
         format.html { redirect_to images_path }
         format.js
       else
@@ -47,12 +46,6 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:comment)
-  end
-
-  def create_notification(image, comment)
-    # TODO: find out if we need comment_id: comment.id passed to Notification.create
-    return if image.user.id == current_user.id
-    Notification.create(user_id: image.user.id, notified_by_id: current_user.id, image_id: image.id, notify_type: 'comment')
   end
 
 end

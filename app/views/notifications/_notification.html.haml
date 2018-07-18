@@ -1,2 +1,2 @@
 %li
-  = link_to "#{notification.notified_by.username} has #{notification.notify_type}ed on your post", link_through_path(notification)
+  = link_to "#{notification.notified_by.username} has #{notification.notify_type}ed on your post #{from_time(notification.created_at)} ago", link_through_path(notification)

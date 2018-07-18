@@ -27,7 +27,6 @@ class CommentsController < ApplicationController
 
     if @comment.user_id == current_user.id
       @comment.destroy
-      flash[:success] = "You smashed that comment"
       respond_to do |format|
         format.html { redirect_to images_path }
         format.js

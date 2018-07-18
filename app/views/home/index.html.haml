@@ -1,7 +1,13 @@
-%h1 Welcome to AnxietyGram
-%h4 Latest submission!...
-%div.flex-image
-  = image_tag @welcome_image.graphic.url(:medium), class: 'homepage-image'
-%br
-= link_to "Enter to endlessly compare yourself to others", images_path
+.posts-wrapper
+  .post
+    .post-head
+      %h1 Welcome to AnxietyGram
+      %h4 Latest submission!...
+    .index-image
+      = image_tag @welcome_image.graphic.url(:medium), class: 'homepage-image'
+    .caption
+      = @welcome_image.caption
+    .comment-like-form.row
+      .comment-form.col-sm-11
+        = link_to "Enter to endlessly compare yourself to others", images_path
   

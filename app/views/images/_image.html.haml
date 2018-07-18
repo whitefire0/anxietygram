@@ -23,4 +23,3 @@
       .comment-form.col-sm-11
         = form_for [image, image.comments.build], remote: true do |f|
           = f.text_field :comment, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{image.id}"
-          = f.submit "Add comment"

@@ -11,13 +11,19 @@ class ImagesController < ApplicationController
     if @images.count > 0
       render 'show_following'
     else
-      @images = Image.all.order('created_at DESC')
+      @images = Image.all.order('created_at DESC').page(params[:page])
+      flash[:error] = "You are not following anyone, showing all images. Go find people in your Users navbar"
       render 'show_all'
     end
   end
 
-  def display_all
-    @images = Image.all.order('created_at DESC')
+  def all_images
+    @images = Image.all.order('created_at DESC').page(params[:page])
+    # respond_to do |format|
+    #   format.html { redirect_to all_images_path }
+    # end
+    # redirect_to all_images_path
+    render :show_all
   end
 
   def new

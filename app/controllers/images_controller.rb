@@ -6,7 +6,8 @@ class ImagesController < ApplicationController
   def index
     # TODO: paginate followed users posts
     # based on database response, direct to two different views
-    @images = current_user.following_images.order('created_at DESC')
+    # @images = current_user.following_images.order('created_at DESC').page(1)
+    @images = Image.of_followed_users(current_user.following).order('created_at DESC').page(params[:page])
     if @images.count > 0
       render 'show_following'
     else

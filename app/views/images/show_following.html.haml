@@ -1,9 +1,5 @@
-- unless @images.empty?
-  - @images.each do |image|
-    = render 'image', image: image
-- else
-  .posts-wrapper
-    %h4 You haven't followed anyone...
-    = link_to "Find someone. Anyone.", display_all_path, class: 'btn btn-warning'
-    
-        
+- @images.each do |image|
+  = render 'image', image: image
+
+#paginator.text-center
+  = paginate @images

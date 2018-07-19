@@ -1,2 +1,5 @@
 - @images.each do |image|
   = render 'image', image: image
+
+#paginator.text-center
+  = paginate @images

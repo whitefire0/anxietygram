@@ -193,17 +193,22 @@ body {
 }
 
 #paginator {
+  font-size: 1.5em;
   color: #4090DB;
   height: 120px;
-  width: 120px;
+  width: 200px;
   margin: 60px auto 40px;
   position: relative;
-  display: table;
-  border: 2px solid #4090DB;
-  border-radius: 50%;
+  // display: table;
   :hover {
-    border: 1px solid #2D6DA8;
-    border-radius: 50%;
+    color: darkgrey;
+
+  }
+}
+
+.pagination {
+  a {
+    margin: 10px;
   }
 }
 

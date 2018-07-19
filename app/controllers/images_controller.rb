@@ -3,10 +3,19 @@ class ImagesController < ApplicationController
   before_action :owned_post, only: [:edit, :update, :destroy]
   skip_before_action :login_required, only: [:new, :create]
   
+  # def index
+  #   @images = Image.all
+  #   # TODO: find way of implementing the pagination gem
+  #   # @images = Image.all.order('created_at DESC') params[:page]
+  # end
+
   def index
-    @images = Image.all
-    # TODO: find way of implementing the pagination gem
-    # @images = Image.all.order('created_at DESC') params[:page]
+    # TODO: paginate followed users posts
+    @images = Image.of_followed_users(current_user.following).order('created_at DESC') 
+  end
+
+  def display_all
+    @images = Image.all.order('created_at DESC')
   end
 
   def new

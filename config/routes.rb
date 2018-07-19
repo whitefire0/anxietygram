@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   get 'notifications', to: 'notifications#index'
   get 'notifications/:id/link_through', to: 'notifications#link_through', as: :link_through
 
+  get 'all', to: 'images#display_all', as: :display_all
+
   post ':username/follow_user', to: 'relationships#follow_user', as: :follow_user
   post ':username/unfollow_user', to: 'relationships#unfollow_user', as: :unfollow_user
 

@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
-  before_action :owned_profile, only: [:edit, :update]
   before_action :set_user
+  before_action :owned_profile, only: [:edit, :update]
   before_action :login_required
 
   def show
@@ -31,8 +31,7 @@ class ProfilesController < ApplicationController
   end
 
   def owned_profile
-    # set_user ?needed
-    unless current_user == @user
+    unless current_user.id == @user.id
       flash[:alert] = "That profile doesn't belong to you!"
       redirect_to root_path
     end 

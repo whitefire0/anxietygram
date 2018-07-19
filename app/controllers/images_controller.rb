@@ -2,16 +2,17 @@ class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy, :like]
   before_action :owned_post, only: [:edit, :update, :destroy]
   skip_before_action :login_required, only: [:new, :create]
-  
-  # def index
-  #   @images = Image.all
-  #   # TODO: find way of implementing the pagination gem
-  #   # @images = Image.all.order('created_at DESC') params[:page]
-  # end
 
   def index
     # TODO: paginate followed users posts
-    @images = Image.of_followed_users(current_user.following).order('created_at DESC') 
+    # based on database response, direct to two different views
+    @images = current_user.following_images.order('created_at DESC')
+    if @images.count > 0
+      render 'show_following'
+    else
+      @images = Image.all.order('created_at DESC')
+      render 'show_all'
+    end
   end
 
   def display_all
@@ -23,7 +24,6 @@ class ImagesController < ApplicationController
   end
 
   def create
-    Rails.logger.error "Current user: #{current_user.inspect}"
     @image = current_user.images.build(safe_user_params)
     if @image.save
       flash[:success] = "Your post has been created!"

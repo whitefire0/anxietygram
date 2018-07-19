@@ -12,6 +12,4 @@ class Image < ApplicationRecord
   belongs_to :user
   has_many :notifications, dependent: :destroy
 
-  scope :of_followed_users, -> (following_users) { where user_id: following_users }
-  
 end

@@ -4,9 +4,12 @@
       %h1 Welcome to AnxietyGram
       %h4 Latest submission!...
     .index-image
-      = image_tag @welcome_image.graphic.url(:medium), class: 'homepage-image'
-    .caption
-      = @welcome_image.caption
+      - if @welcome_image
+        = image_tag @welcome_image.graphic.url(:medium), class: 'homepage-image'
+        .caption
+        = @welcome_image.caption
+      - else
+        = image_tag 'default-welcome.jpg'
     .comment-like-form.row
       .comment-form.col-sm-11
         = link_to "Enter to endlessly compare yourself to others", images_path

@@ -9,9 +9,9 @@
     .collapse.navbar-collapse#bs-navbar-collapse-1
       %ul.nav.navbar-nav.navbar-right
         - if logged_in?
-          %li
-            = render 'notifications/notification_dropdown'
-          %li= link_to 'My Feed', images_path
+          %li= render 'notifications/notification_dropdown'
+          - if !current_user.following.blank?
+            %li= link_to 'My Feed', images_path
           %li= link_to 'All Images', all_images_path
           %li= link_to 'Submit Image', new_image_path
           %li= link_to 'My Profile', profile_path(current_user.username)

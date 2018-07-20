@@ -7,13 +7,14 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(username: params[:username])
-    DebugHelper.mylog("newlogin", "@user", @user.inspect)
     if @user.present? && @user.authenticate(params[:password])
       self.current_user = @user
       flash[:success] = "User logged in successfully"
       redirect_to root_path
     else
+      Rails.logger.info "GOT HERE 01 - Invalid login, render flash error message"
       flash.now[:error] = "Username/password was invalid"
+      render 'new'
     end
   end
 

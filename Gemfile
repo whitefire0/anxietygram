@@ -51,6 +51,9 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'capistrano', '~> 3.11'
+  gem 'procodile-capistrano'
+  gem 'awesome_print'
 end
 
 group :test do
@@ -67,12 +70,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haml'
 gem 'paperclip'
 gem 'authie', '~> 3.1'
-# gem 'dynamic_form'
 gem 'simple_form'
 gem 'seed_dump'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
-gem 'awesome_print'
 gem 'kaminari', '~> 1.1.1'
 gem 'acts_as_votable', '~> 0.11.1'
 

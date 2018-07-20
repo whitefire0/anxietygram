@@ -11,6 +11,7 @@
     = render 'layouts/navbar'
     .main
       .posts-wrapper
+        = flash.inspect
         - flash.each do |key, value|
           %div{ class: "#{flash_class(key)}" }
             = value

@@ -31,7 +31,7 @@ class ProfilesController < ApplicationController
   end
 
   def owned_profile
-    unless current_user.id == @user.id
+    unless .id == @user.id
       flash[:alert] = "That profile doesn't belong to you!"
       redirect_to root_path
     end 

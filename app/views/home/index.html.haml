@@ -1,16 +1,16 @@
-.posts-wrapper
-  .post
-    .post-head
-      %h1 Welcome to AnxietyGram
-      %h4 Latest submission!...
-    .index-image
-      - if @welcome_image
-        = image_tag @welcome_image.graphic.url(:medium), class: 'homepage-image'
-        .caption
-        = @welcome_image.caption
-      - else
-        = image_tag 'default-welcome.jpg'
-    .comment-like-form.row
-      .comment-form.col-sm-11
-        = link_to "Enter to endlessly compare yourself to others", images_path
-  
+.jumbotron
+  .container-fluid.text-center
+    %h1 Welcome to AnxietyGram
+    %h4 Latest submission!...
+    .row
+      .col-md-12.spacer
+        - if @welcome_image
+          = image_tag @welcome_image.graphic.url(:medium), class: 'homepage-image img-responsive'
+          .caption
+          = @welcome_image.caption
+        - else
+          = image_tag 'default-welcome.jpg'
+    .row
+      .col-md-12.spacer
+      = link_to "Enter to endlessly compare yourself to others", images_path
+      

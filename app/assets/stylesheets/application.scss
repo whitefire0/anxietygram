@@ -1,6 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.spacer {
+  margin-top: 50px;
+}
+
 html {
   height: 100%;
 }
@@ -53,7 +57,7 @@ body {
   border-style: solid;
   border-radius: 3px;
   border-width: 1px;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
   .post-head {
     flex-direction: row;
     height: 64px;

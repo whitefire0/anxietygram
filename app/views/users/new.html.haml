@@ -2,14 +2,12 @@
   .container
     .row
       .col-md-4.col-md-offset-4
-        .log-in.panel
-          .panel-heading
-            %h2 Create Your Account
-          = simple_form_for @user do |f|
-            = f.error_notification
-            .panel-body
-              = f.input :email, required: true, autofocus: true, label: false, placeholder: 'Email', input_html: { class: 'input-lg' }
-              = f.input :username, required: true, label: false, placeholder: 'User Name', input_html: { class: 'input-lg'}
-              = f.input :password, required: true, label: false, placeholder: 'Password', input_html: { class: 'input-lg' }
-              = f.input :password_confirmation, required: true, label: false, placeholder: 'Confirm Password', input_html: { class: 'input-lg' } 
-              = f.button :submit, "Sign up", class: 'btn-lg btn-info btn-block'
+        .panel-heading.text-center
+          %h2 Join Anxiety Gram
+        .panel-body
+          = simple_form_for @user, class: 'form-group' do |f|
+            = f.input :email, required: true, autofocus: true, label: false, placeholder: 'Email', input_html: { class: 'input-lg form-control-text-center' }
+            = f.input :username, required: true, label: false, placeholder: 'User Name', input_html: { class: 'input-lg form-control-text-center'}
+            = f.input :password, required: true, label: false, placeholder: 'Password', input_html: { class: 'input-lg form-control-text-center' }
+            = f.input :password_confirmation, required: true, label: false, placeholder: 'Confirm Password', input_html: { class: 'input-lg' } 
+            = f.button :submit, "Sign up", class: 'btn-lg btn-info btn-block form-control-text-center'

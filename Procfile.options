@@ -1,0 +1,13 @@
+app_name: AnxietyGram
+pid_root: tmp/pids
+log_path: log/procodile.log
+
+env:
+  RAILS_ENV=production
+
+processes:
+  web:
+    log_path: log/web.log
+    restart_mode: usr1
+    env:
+      PORT: 3000

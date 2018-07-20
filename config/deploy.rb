@@ -39,4 +39,4 @@ set :deploy_to, "/opt/rails/anxietygram"
 # set :ssh_options, verify_host_key: :secure
 
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
-append :linked_files, 'config/database.yml config/master.key'
+append :linked_files, 'config/database.yml', 'config/master.key', 'Procfile.local'

@@ -4,25 +4,11 @@ class ImagesController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
 
   def index
-    # TODO: paginate followed users posts
-    # based on database response, direct to two different views
-    # @images = current_user.following_images.order('created_at DESC').page(1)
     @images = Image.of_followed_users(current_user.following).order('created_at DESC').page(params[:page])
-    if @images.count > 0
-      render 'show_following'
-    else
-      @images = Image.all.order('created_at DESC').page(params[:page])
-      flash[:error] = "You are not following anyone, showing all images. Go find people in your Users navbar"
-      render 'show_all'
-    end
   end
 
   def all_images
     @images = Image.all.order('created_at DESC').page(params[:page])
-    # respond_to do |format|
-    #   format.html { redirect_to all_images_path }
-    # end
-    # redirect_to all_images_path
     render :show_all
   end
 

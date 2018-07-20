@@ -4,8 +4,8 @@ class ProfilesController < ApplicationController
   before_action :login_required
 
   def show
-    @user = User.find_by(username: params[:username])
-    @images = User.find_by(username: params[:username]).images.order('created_at DESC')
+    @user = User.find_by!(username: params[:username])
+    @images = @user.images.order('created_at DESC')
   end
 
   def edit
@@ -31,7 +31,7 @@ class ProfilesController < ApplicationController
   end
 
   def owned_profile
-    unless .id == @user.id
+    unless current_user.id == @user.id
       flash[:alert] = "That profile doesn't belong to you!"
       redirect_to root_path
     end 

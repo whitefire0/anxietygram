@@ -1,7 +1,7 @@
 .posts-wrapper
   .post
     .post-body
-      .image-wrap
+      .image-wrap.img-responsive
         = form_image_select(@image)
         = simple_form_for @image, html: { multipart: true } do |f|
           .row

@@ -20,7 +20,7 @@ class ImagesController < ApplicationController
     @image = current_user.images.build(safe_user_params)
     if @image.save
       flash[:success] = "Your post has been created!"
-      redirect_to images_path
+      redirect_to all_images_path
     else
       flash[:error] = "Image submission error"
       redirect_to new_image_path
@@ -50,7 +50,7 @@ class ImagesController < ApplicationController
   def destroy
     if @image.destroy
       flash[:success] = "Image destroyed successfully"
-      redirect_to images_path
+      redirect_to all_images_path
     else
       flash[:error] = "Image destroy unsuccessful"
       redirect_to image_path

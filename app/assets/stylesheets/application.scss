@@ -1,10 +1,13 @@
-* {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
   box-sizing: inherit;
 }
 
 html {
+  // default browser font size is 16px, gives us a standard of 10px for rem calculations
   font-size: 62.5%;
 }
 

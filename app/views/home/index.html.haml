@@ -1,16 +1,9 @@
-.jumbotron
-  .container-fluid.text-center
-    %h1 Welcome to AnxietyGram (beta)
-    %h4 Latest submission!...
-    .row
-      .col-md-12.spacer
-        - if @welcome_image
-          = image_tag @welcome_image.graphic.url(:medium), class: 'homepage-image'
-          .caption.spacer
-          = @welcome_image.caption
-        - else
-          = image_tag 'default-welcome.jpg'
-    .row
-      .col-md-12.spacer
-      = link_to "Enter to endlessly compare yourself to others", images_path
+%h1 Welcome to AnxietyGram (beta)
+%h4 Latest submission!...
+- if @welcome_image
+  = image_tag @welcome_image.graphic.url(:medium), class: ''
+  = @welcome_image.caption
+- else
+  = image_tag 'default-welcome.jpg'
+= link_to "Enter to endlessly compare yourself to others", images_path
       

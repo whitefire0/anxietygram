@@ -1,27 +1,16 @@
-.posts-wrapper
-  .row.profile-header
-    -if @user.id == current_user.id
-      = link_to 'Edit Profile', edit_profile_path(@user.username)
-    .col-md-6
-      .img-circle
-        = profile_avatar_select(@user)
-    .col-md-6
-      .user-name-and-follow
-        %h3.profile-user-name
-          = @user.username
-        %span
-          - if @user.id == current_user.id
-            = link_to 'Edit Profile', edit_profile_path(@user.username), class: 'btn edit-button'
-          - else
-            - if current_user_is_following(current_user, @user)
-              = link_to 'Following', unfollow_user_path, remote: true, class: 'btn unfollow-button', id: 'unfollow-button', method: :post
-            - else
-              = link_to 'Follow', follow_user_path, remote: true, class: 'btn follow-button', id: 'follow-button', method: :post
-      %p.profile-bio
-        = @user.bio
-      .user-statistics
-        %p
-          = pluralize @user.images.count, 'image'
-
+-if @user.id == current_user.id
+  = link_to 'Edit Profile', edit_profile_path(@user.username)
+  = profile_avatar_select(@user)
+  = @user.username
+- if @user.id == current_user.id
+  = link_to 'Edit Profile', edit_profile_path(@user.username), class: 'btn edit-button'
+- else
+  - if current_user_is_following(current_user, @user)
+    = link_to 'Following', unfollow_user_path, remote: true, class: 'btn unfollow-button', id: 'unfollow-button', method: :post
+  - else
+    = link_to 'Follow', follow_user_path, remote: true, class: 'btn follow-button', id: 'follow-button', method: :post
+= @user.bio
+%p
+= pluralize @user.images.count, 'image'
 -@images.each do |image|
   = render 'images/image', image: image

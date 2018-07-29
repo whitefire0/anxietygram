@@ -1,13 +1,7 @@
-.registration-bg
-  .container
-    .row
-      .col-md-4.col-md-offset-4
-        .panel-heading.text-center
-          %h2 Join Anxiety Gram
-        .panel-body.text-center
-          = simple_form_for @user, class: 'form-group' do |f|
-            = f.input :email, required: true, autofocus: true, label: false, placeholder: 'Email', input_html: { class: 'input-lg form-control-text-center small-spacer' }
-            = f.input :username, required: true, label: false, placeholder: 'User Name', input_html: { class: 'input-lg form-control-text-center small-spacer'}
-            = f.input :password, required: true, label: false, placeholder: 'Password', input_html: { class: 'input-lg form-control-text-center small-spacer' }
-            = f.input :password_confirmation, required: true, label: false, placeholder: 'Confirm Password', input_html: { class: 'input-lg small-spacer' } 
-            = f.button :submit, "Sign up", class: 'btn-lg btn-info btn-block form-control-text-center small-spacer'
+%h2 Join Anxiety Gram
+= simple_form_for @user, class: 'form-group' do |f|
+  = f.input :email, required: true, autofocus: true, label: false, placeholder: 'Email', input_html: { class: 'input-lg form-control-text-center small-spacer' }
+  = f.input :username, required: true, label: false, placeholder: 'User Name', input_html: { class: 'input-lg form-control-text-center small-spacer'}
+  = f.input :password, required: true, label: false, placeholder: 'Password', input_html: { class: 'input-lg form-control-text-center small-spacer' }
+  = f.input :password_confirmation, required: true, label: false, placeholder: 'Confirm Password', input_html: { class: 'input-lg small-spacer' } 
+  = f.button :submit, "Sign up", class: 'btn-lg btn-info btn-block form-control-text-center small-spacer'

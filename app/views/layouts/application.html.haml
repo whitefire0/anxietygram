@@ -9,9 +9,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     = render 'layouts/navbar'
-    .main
-      .posts-wrapper
-        - flash.each do |key, value|
-          %div{ class: "#{flash_class(key)}" }
-            = value
-      = yield
+    - flash.each do |key, value|
+      %div{ class: "#{flash_class(key)}" }
+        = value
+    = yield

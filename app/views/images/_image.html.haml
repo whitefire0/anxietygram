@@ -1,25 +1,11 @@
-.posts-wrapper
-  .post
-    .post-head
-      .thumb-img
-      .user-name
-        = link_to image.user.username, profile_path(image.user.username)
-      .time-ago
-        = time_ago_in_words image.created_at
-    .image.center-block
-      = link_to (image_tag image.graphic.url(:medium), class:'img-responsive'), image_path(image)
-    .post-bottom
-      = render 'images/likes', image: image
-      .caption
-        .user-name
-          = image.user.username
-        = image.caption
-      .comments{id: "comments_#{image.id}"}
-      = render image.comments, image: image
-          
-    .comment-like-form.row
-      .like-button.col-sm-1
-        = link_to '', like_image_path(image.id), remote: true, id: "like_#{image.id}", class: "like glyphicon #{liked_image image}"
-      .comment-form.col-sm-11
-        = form_for [image, image.comments.build], remote: true do |f|
-          = f.text_field :comment, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{image.id}"
+= link_to image.user.username, profile_path(image.user.username)
+= time_ago_in_words image.created_at
+= link_to (image_tag image.graphic.url(:medium), class:''), image_path(image)
+= render 'images/likes', image: image
+= image.user.username
+= image.caption
+.comments{id: "comments_#{image.id}"}
+= render image.comments, image: image
+= link_to '', like_image_path(image.id), remote: true, id: "like_#{image.id}", class: "like glyphicon #{liked_image image}"
+= form_for [image, image.comments.build], remote: true do |f|
+  = f.text_field :comment, placeholder: 'Add a comment...', class: "", id: "comment_content_#{image.id}"
